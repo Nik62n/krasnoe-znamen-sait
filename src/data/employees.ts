@@ -11,7 +11,7 @@ export interface Employee {
 export const employees: Employee[] = [
   {
     id: 1,
-    name: "Петров Иван Сергеевич",
+    name: "1. Имя Фамилия",
     position: "Главный инженер",
     achievements: [
       "Руководил реконструкцией производственного цеха №3",
@@ -23,7 +23,7 @@ export const employees: Employee[] = [
   },
   {
     id: 2,
-    name: "Смирнова Анна Владимировна",
+    name: "2. Имя Фамилия",
     position: "Начальник отдела контроля качества",
     achievements: [
       "Разработала новую методику проверки продукции",
@@ -35,7 +35,7 @@ export const employees: Employee[] = [
   },
   {
     id: 3,
-    name: "Козлов Дмитрий Александрович",
+    name: "3. Имя Фамилия",
     position: "Ведущий технолог",
     achievements: [
       "Модернизировал технологический процесс производства",
@@ -47,7 +47,7 @@ export const employees: Employee[] = [
   },
   {
     id: 4,
-    name: "Ковалева Елена Игоревна",
+    name: "4. Имя Фамилия",
     position: "Главный экономист",
     achievements: [
       "Оптимизировала финансовые потоки предприятия",
@@ -59,7 +59,7 @@ export const employees: Employee[] = [
   },
   {
     id: 5,
-    name: "Соколов Алексей Петрович",
+    name: "5. Имя Фамилия",
     position: "Мастер производственного участка",
     achievements: [
       "Руководил запуском нового конвейера",

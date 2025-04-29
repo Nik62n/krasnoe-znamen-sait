@@ -12,23 +12,20 @@ interface EmployeeCardProps {
 const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
   const { name, position, achievements, photoUrl, yearsOfService } = employee;
   
-  // Получаем инициалы для аватара
-  const getInitials = (fullName: string) => {
-    return fullName
-      .split(' ')
-      .map(name => name[0])
-      .join('')
-      .substring(0, 2)
-      .toUpperCase();
+  // Получаем номер сотрудника для аватара
+  const getNumber = (fullName: string) => {
+    return fullName.split('.')[0];
   };
 
   return (
     <Card className="w-full max-w-md transition-all duration-300 hover:shadow-lg">
       <CardHeader className="flex flex-row items-center gap-4 pb-2">
-        <Avatar className="h-20 w-20 border-2 border-red-700">
-          <AvatarImage src={photoUrl} alt={name} />
-          <AvatarFallback className="bg-red-100 text-red-700">{getInitials(name)}</AvatarFallback>
-        </Avatar>
+        <div className="rounded-full p-1 border-4 border-red-600 overflow-hidden h-24 w-24 flex items-center justify-center">
+          <Avatar className="h-full w-full">
+            <AvatarImage src={photoUrl} alt={name} className="object-cover" />
+            <AvatarFallback className="bg-red-100 text-red-700 font-bold text-xl">{getNumber(name)}</AvatarFallback>
+          </Avatar>
+        </div>
         <div className="flex-1">
           <CardTitle className="text-xl">{name}</CardTitle>
           <CardDescription className="text-lg font-medium text-red-700">{position}</CardDescription>
