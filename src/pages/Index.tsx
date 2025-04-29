@@ -6,15 +6,14 @@ import EmployeeCard from '@/components/EmployeeCard';
 const Index: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
-      {/* Хедер */}
-      <header className="bg-red-700 py-8 px-4 shadow-md">
+      {/* Хедер с логотипом */}
+      <header className="bg-white py-8 px-4 shadow-md">
         <div className="container mx-auto text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
-            ООО "Красное Знамя"
-          </h1>
-          <p className="text-red-100 text-lg">
-            Традиции качества с 1923 года
-          </p>
+          <img 
+            src="https://cdn.poehali.dev/files/c5b8fc89-e433-46ae-9deb-73bcf08bf05f.png" 
+            alt="Завод «КРАСНОЕ ЗНАМЯ» основан в 1918 г." 
+            className="max-w-full h-auto mx-auto max-h-40"
+          />
         </div>
       </header>
 
@@ -26,7 +25,7 @@ const Index: React.FC = () => {
           </h2>
           <div className="prose prose-lg mx-auto text-gray-700">
             <p>
-              <span className="font-semibold">ООО "Красное Знамя"</span> — предприятие с вековой историей, основанное в 1923 году. 
+              <span className="font-semibold">ООО "Красное Знамя"</span> — предприятие с вековой историей, основанное в 1918 году. 
               Начав свой путь как небольшая мастерская, сегодня мы являемся одним из ведущих производственных предприятий региона.
             </p>
             <p>
@@ -68,9 +67,8 @@ const Index: React.FC = () => {
       {/* Футер */}
       <footer className="bg-red-800 text-white py-6 px-4">
         <div className="container mx-auto text-center">
-          <p className="mb-2">© 2023-{new Date().getFullYear()} ООО "Красное Знамя". Все права защищены.</p>
           <p className="text-red-200 text-sm">
-            Адрес: г. Москва, ул. Промышленная, д. 123 | Телефон: +7 (495) 123-45-67 | Email: info@krasnoe-znamya.ru
+            Адрес: г. Рязань, пр. Шабулина, 2А | Телефон: +7 (495) 123-45-67 | Email: info@krasnoe-znamya.ru
           </p>
         </div>
       </footer>

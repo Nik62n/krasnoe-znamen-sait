@@ -5,68 +5,42 @@ export interface Employee {
   position: string;
   achievements: string[];
   photoUrl: string;
-  yearsOfService: number;
 }
 
 export const employees: Employee[] = [
   {
     id: 1,
     name: "1. Имя Фамилия",
-    position: "Главный инженер",
-    achievements: [
-      "Руководил реконструкцией производственного цеха №3",
-      "Внедрил систему автоматизации производства",
-      "Награжден почетной грамотой Министерства промышленности"
-    ],
-    photoUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=256&auto=format",
-    yearsOfService: 15
+    position: "Должность: рабочий из ХХХ-цеха",
+    achievements: [],
+    photoUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=256&auto=format"
   },
   {
     id: 2,
     name: "2. Имя Фамилия",
-    position: "Начальник отдела контроля качества",
-    achievements: [
-      "Разработала новую методику проверки продукции",
-      "Снизила процент брака на производстве на 27%",
-      "Автор 3 патентов в области контроля качества"
-    ],
-    photoUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=256&auto=format",
-    yearsOfService: 12
+    position: "Должность: рабочий из ХХХ-цеха",
+    achievements: [],
+    photoUrl: ""
   },
   {
     id: 3,
     name: "3. Имя Фамилия",
-    position: "Ведущий технолог",
-    achievements: [
-      "Модернизировал технологический процесс производства",
-      "Сократил энергозатраты предприятия на 15%",
-      "Участник международной выставки инноваций"
-    ],
-    photoUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=256&auto=format",
-    yearsOfService: 8
+    position: "Должность: рабочий из ХХХ-цеха",
+    achievements: [],
+    photoUrl: ""
   },
   {
     id: 4,
     name: "4. Имя Фамилия",
-    position: "Главный экономист",
-    achievements: [
-      "Оптимизировала финансовые потоки предприятия",
-      "Привлекла инвестиции на сумму более 50 млн рублей",
-      "Разработала стратегию экономического развития до 2030 года"
-    ],
-    photoUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=256&auto=format",
-    yearsOfService: 10
+    position: "Должность: рабочий из ХХХ-цеха",
+    achievements: [],
+    photoUrl: ""
   },
   {
     id: 5,
     name: "5. Имя Фамилия",
-    position: "Мастер производственного участка",
-    achievements: [
-      "Руководил запуском нового конвейера",
-      "Подготовил более 30 молодых специалистов",
-      "Рационализаторские предложения сэкономили предприятию более 2 млн рублей"
-    ],
-    photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=256&auto=format",
-    yearsOfService: 20
+    position: "Должность: рабочий из ХХХ-цеха",
+    achievements: [],
+    photoUrl: ""
   }
 ];
