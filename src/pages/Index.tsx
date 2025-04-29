@@ -1,59 +1,77 @@
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
-import { EmployeeCard } from "@/components/EmployeeCard";
-import { employees } from "@/data/employees";
+import React from 'react';
+import { employees } from '@/data/employees';
+import EmployeeCard from '@/components/EmployeeCard';
 
-const Index = () => {
+const Index: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <header className="container mx-auto py-10 text-center">
-        <div className="mx-auto mb-8 flex justify-center">
-          <img src="/logo-b.svg" alt="Лого" className="h-20 w-20" />
+    <div className="min-h-screen bg-white">
+      {/* Хедер */}
+      <header className="bg-red-700 py-8 px-4 shadow-md">
+        <div className="container mx-auto text-center">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
+            ООО "Красное Знамя"
+          </h1>
+          <p className="text-red-100 text-lg">
+            Традиции качества с 1923 года
+          </p>
         </div>
-        <h1 className="text-4xl font-bold text-primary mb-2">ООО "Красное Знамя"</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Многолетний опыт и высокий профессионализм на службе вашего благополучия
-        </p>
       </header>
 
-      <Separator className="my-6" />
+      {/* Секция с историей */}
+      <section className="py-12 px-4 bg-red-50">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold text-center mb-8 text-red-800">
+            Богатая история предприятия
+          </h2>
+          <div className="prose prose-lg mx-auto text-gray-700">
+            <p>
+              <span className="font-semibold">ООО "Красное Знамя"</span> — предприятие с вековой историей, основанное в 1923 году. 
+              Начав свой путь как небольшая мастерская, сегодня мы являемся одним из ведущих производственных предприятий региона.
+            </p>
+            <p>
+              За годы работы наше предприятие прошло через разные этапы становления: от механизации производственных процессов 
+              в 30-е годы до внедрения передовых цифровых технологий в современную эпоху.
+            </p>
+            <p>
+              В годы Великой Отечественной войны завод был эвакуирован, но уже в 1944 году возобновил работу на прежнем месте, 
+              активно участвуя в восстановлении народного хозяйства страны.
+            </p>
+            <p>
+              Настоящей гордостью ООО "Красное Знамя" всегда были и остаются его сотрудники — профессионалы своего дела, 
+              чей труд вносит неоценимый вклад в развитие предприятия и всей отрасли.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <section className="container mx-auto py-10">
-        <h2 className="text-3xl font-bold mb-6 text-center">Наша история</h2>
-        <Card className="mb-12">
-          <CardContent className="pt-6">
-            <p className="mb-4 text-lg">
-              ООО "Красное Знамя" было основано в 1978 году и за прошедшие годы выросло 
-              из небольшого предприятия в крупную компанию федерального масштаба.
-            </p>
-            <p className="mb-4 text-lg">
-              Наша организация всегда стремилась собрать лучших профессионалов в своей области,
-              обеспечивая не только развитие бизнеса, но и создавая возможности для личностного 
-              роста каждого сотрудника.
-            </p>
-            <p className="mb-2 text-lg">
-              Сегодня "Красное Знамя" — это сплоченный коллектив специалистов, 
-              чьи достижения признаны на российском и международном уровне.
-            </p>
-          </CardContent>
-        </Card>
-
-        <div className="my-12">
-          <h2 className="text-3xl font-bold mb-10 text-center">Наши специалисты</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {employees.map((employee) => (
-              <EmployeeCard key={employee.id} employee={employee} />
+      {/* Секция с сотрудниками */}
+      <section className="py-12 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8 text-red-800">
+            Наши специалисты
+          </h2>
+          <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
+            Представляем вам некоторых из наших выдающихся сотрудников, чьи знания, опыт и преданность делу
+            позволяют ООО "Красное Знамя" сохранять лидирующие позиции на рынке.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            {employees.map(employee => (
+              <div key={employee.id} className="flex justify-center">
+                <EmployeeCard employee={employee} />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <footer className="bg-muted py-6 mt-10">
+      {/* Футер */}
+      <footer className="bg-red-800 text-white py-6 px-4">
         <div className="container mx-auto text-center">
-          <p className="text-muted-foreground">© {new Date().getFullYear()} ООО "Красное Знамя". Все права защищены.</p>
-          <p className="text-sm mt-2 text-muted-foreground">г. Москва, ул. Промышленная, д. 14</p>
+          <p className="mb-2">© 2023-{new Date().getFullYear()} ООО "Красное Знамя". Все права защищены.</p>
+          <p className="text-red-200 text-sm">
+            Адрес: г. Москва, ул. Промышленная, д. 123 | Телефон: +7 (495) 123-45-67 | Email: info@krasnoe-znamya.ru
+          </p>
         </div>
       </footer>
     </div>
