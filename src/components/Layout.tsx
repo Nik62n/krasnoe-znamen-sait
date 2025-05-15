@@ -12,7 +12,7 @@ const Layout: React.FC = () => {
             to="/"
             className={({ isActive }) =>
               cn(
-                "py-3 px-6 rounded-full text-white font-medium bg-red-600 hover:bg-red-700 transition-colors text-center",
+                "py-3 px-6 rounded-full text-white font-medium bg-[#e32417] hover:bg-red-700 transition-colors text-center",
                 isActive && "bg-red-700 shadow-md",
               )
             }
@@ -23,7 +23,7 @@ const Layout: React.FC = () => {
             to="/vacancies"
             className={({ isActive }) =>
               cn(
-                "py-3 px-6 rounded-full text-white font-medium bg-red-600 hover:bg-red-700 transition-colors text-center",
+                "py-3 px-6 rounded-full text-white font-medium bg-[#e32417] hover:bg-red-700 transition-colors text-center",
                 isActive && "bg-red-700 shadow-md",
               )
             }
@@ -34,7 +34,7 @@ const Layout: React.FC = () => {
             to="/benefits"
             className={({ isActive }) =>
               cn(
-                "py-3 px-6 rounded-full text-white font-medium bg-red-600 hover:bg-red-700 transition-colors text-center",
+                "py-3 px-6 rounded-full text-white font-medium bg-[#e32417] hover:bg-red-700 transition-colors text-center",
                 isActive && "bg-red-700 shadow-md",
               )
             }
@@ -45,7 +45,7 @@ const Layout: React.FC = () => {
             to="/events"
             className={({ isActive }) =>
               cn(
-                "py-3 px-6 rounded-full text-white font-medium bg-red-600 hover:bg-red-700 transition-colors text-center",
+                "py-3 px-6 rounded-full text-white font-medium bg-[#e32417] hover:bg-red-700 transition-colors text-center",
                 isActive && "bg-red-700 shadow-md",
               )
             }
