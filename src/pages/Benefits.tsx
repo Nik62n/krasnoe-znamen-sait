@@ -1,7 +1,7 @@
 import React from "react";
 import BenefitCard from "@/components/BenefitCard";
 
-// Сокращенный массив данных о преимуществах (до 3 элементов)
+// Полный массив данных о преимуществах
 const benefits = [
   {
     id: 1,
@@ -24,6 +24,27 @@ const benefits = [
       "Регулярное обучение, курсы повышения квалификации и возможности карьерного роста внутри предприятия.",
     iconName: "GraduationCap",
   },
+  {
+    id: 4,
+    title: "Комфортные условия труда",
+    description:
+      "Современное оборудование, соблюдение всех норм безопасности и санитарно-гигиенических требований на рабочих местах.",
+    iconName: "Coffee",
+  },
+  {
+    id: 5,
+    title: "Корпоративная культура",
+    description:
+      "Дружный коллектив, корпоративные мероприятия, спортивные соревнования и праздники для работников и их семей.",
+    iconName: "Users",
+  },
+  {
+    id: 6,
+    title: "Конкурентная оплата труда",
+    description:
+      "Своевременная выплата заработной платы, система премирования и материального поощрения за профессиональные достижения.",
+    iconName: "Wallet",
+  },
 ];
 
 const Benefits: React.FC = () => {
@@ -37,7 +58,7 @@ const Benefits: React.FC = () => {
           Мы создаем все условия для комфортной работы и профессионального
           развития наших сотрудников.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
           {benefits.map((benefit) => (
             <BenefitCard
               key={benefit.id}

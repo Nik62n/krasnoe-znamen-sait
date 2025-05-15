@@ -15,16 +15,16 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
 }) => {
   return (
     <Card className="w-full transition-all duration-300 hover:shadow-lg border-red-200">
-      <CardHeader className="pb-1 pt-3">
-        <div className="flex items-center gap-2">
+      <CardHeader className="pb-0 pt-2">
+        <div className="flex items-center gap-1">
           <div className="p-1 bg-red-100 rounded-full">
-            <Icon name={iconName} className="h-4 w-4 text-[#e32417]" />
+            <Icon name={iconName} className="h-3 w-3 text-[#e32417]" />
           </div>
-          <CardTitle className="text-base text-[#e32417]">{title}</CardTitle>
+          <CardTitle className="text-sm text-[#e32417]">{title}</CardTitle>
         </div>
       </CardHeader>
-      <CardContent className="pb-3">
-        <p className="text-xs text-gray-600">{description}</p>
+      <CardContent className="pb-2 pt-1">
+        <p className="text-[10px] text-gray-600 line-clamp-3">{description}</p>
       </CardContent>
     </Card>
   );
