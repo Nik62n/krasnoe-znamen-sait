@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -29,6 +28,15 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      {/* Футер расположен здесь, чтобы он растягивался на всю ширину экрана */}
+      <footer className="bg-[#e32417] text-white py-6 px-4 w-full">
+        <div className="container mx-auto text-center">
+          <p className="text-white text-sm">
+            Адрес: г. Рязань, пр. Шабулина, 2А | Телефон: +7 (495) 123-45-67 |
+            Email: info@krasnoe-znamya.ru
+          </p>
+        </div>
+      </footer>
     </TooltipProvider>
   </QueryClientProvider>
 );
