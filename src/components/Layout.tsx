@@ -60,11 +60,11 @@ const Layout: React.FC = () => {
         {/* Хедер с логотипом */}
         <header className="bg-white py-8 px-4 shadow-md">
           <div className="container mx-auto text-center">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Logo_of_Krasnoe_Znamya_plant.svg/1200px-Logo_of_Krasnoe_Znamya_plant.svg.png"
-              alt="Завод «КРАСНОЕ ЗНАМЯ» основан в 1918 г."
-              className="max-w-full h-auto mx-auto max-h-40"
-            />
+            <div className="flex justify-center items-center">
+              <h1 className="text-3xl font-bold text-[#e32417]">
+                Завод «КРАСНОЕ ЗНАМЯ» основан в 1918 г.
+              </h1>
+            </div>
           </div>
         </header>
 
