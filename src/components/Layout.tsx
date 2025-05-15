@@ -61,7 +61,7 @@ const Layout: React.FC = () => {
         <header className="bg-white py-8 px-4 shadow-md">
           <div className="container mx-auto text-center">
             <img
-              src="https://cdn.poehali.dev/files/c5b8fc89-e433-46ae-9deb-73bcf08bf05f.png"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Logo_of_Krasnoe_Znamya_plant.svg/1200px-Logo_of_Krasnoe_Znamya_plant.svg.png"
               alt="Завод «КРАСНОЕ ЗНАМЯ» основан в 1918 г."
               className="max-w-full h-auto mx-auto max-h-40"
             />

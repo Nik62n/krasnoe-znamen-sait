@@ -12,7 +12,7 @@ const Events: React.FC = () => {
         <Card className="overflow-hidden mb-8">
           <div className="aspect-w-16 aspect-h-9 relative">
             <img
-              src="https://cdn.poehali.dev/files/2ad928bb-1a1f-424c-ac63-d6ff18aae7b6.png"
+              src="https://motorcycleclub.ru/wp-content/uploads/2021/05/motoprobegi-9-maya.jpg"
               alt="Мотопробег в Рязани"
               className="object-cover w-full"
             />
