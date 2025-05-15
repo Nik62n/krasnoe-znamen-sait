@@ -1,7 +1,7 @@
 import React from "react";
 import BenefitCard from "@/components/BenefitCard";
 
-// Массив данных о преимуществах
+// Сокращенный массив данных о преимуществах (до 3 элементов)
 const benefits = [
   {
     id: 1,
@@ -24,42 +24,20 @@ const benefits = [
       "Регулярное обучение, курсы повышения квалификации и возможности карьерного роста внутри предприятия.",
     iconName: "GraduationCap",
   },
-  {
-    id: 4,
-    title: "Комфортные условия труда",
-    description:
-      "Современное оборудование, соблюдение всех норм безопасности и санитарно-гигиенических требований на рабочих местах.",
-    iconName: "Coffee",
-  },
-  {
-    id: 5,
-    title: "Корпоративная культура",
-    description:
-      "Дружный коллектив, корпоративные мероприятия, спортивные соревнования и праздники для работников и их семей.",
-    iconName: "Users",
-  },
-  {
-    id: 6,
-    title: "Конкурентная оплата труда",
-    description:
-      "Своевременная выплата заработной платы, система премирования и материального поощрения за профессиональные достижения.",
-    iconName: "Wallet",
-  },
 ];
 
 const Benefits: React.FC = () => {
   return (
-    <section className="py-12 px-4 bg-white">
+    <section className="py-3 px-4 bg-white">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8 text-[#e32417]">
+        <h2 className="text-2xl font-bold text-center mb-2 text-[#e32417]">
           Преимущества работы в ООО "Красное Знамя"
         </h2>
-        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-center text-sm text-gray-600 max-w-2xl mx-auto mb-3">
           Мы создаем все условия для комфортной работы и профессионального
-          развития наших сотрудников. Вот почему быть частью команды ООО
-          "Красное Знамя" — это выгодно и престижно.
+          развития наших сотрудников.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
           {benefits.map((benefit) => (
             <BenefitCard
               key={benefit.id}

@@ -2,12 +2,12 @@ import React from "react";
 
 const General: React.FC = () => {
   return (
-    <section className="py-12 px-4 bg-red-50">
+    <section className="py-3 px-4 bg-red-50">
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-3xl font-bold text-center mb-8 text-[#e32417]">
+        <h2 className="text-2xl font-bold text-center mb-3 text-[#e32417]">
           Богатая история предприятия
         </h2>
-        <div className="prose prose-lg mx-auto text-gray-700">
+        <div className="prose-sm mx-auto text-gray-700 space-y-2">
           <p>
             <span className="font-semibold">ООО "Красное Знамя"</span> —
             предприятие с вековой историей, основанное в 1918 году. Начав свой
