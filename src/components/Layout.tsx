@@ -10,9 +10,32 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import Icon from "@/components/ui/icon";
 
 const Layout: React.FC = () => {
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+  const [showLoginError, setShowLoginError] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    // Показываем сообщение об ошибке
+    setShowLoginError(true);
+
+    // Если хотите, можете добавить автоматическое скрытие сообщения через некоторое время
+    // setTimeout(() => setShowLoginError(false), 5000);
+  };
+
+  // Сбрасываем форму и ошибки при закрытии диалога
+  const handleDialogChange = (open: boolean) => {
+    setLoginDialogOpen(open);
+    if (!open) {
+      setShowLoginError(false);
+      setUsername("");
+      setPassword("");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white flex">
@@ -66,7 +89,7 @@ const Layout: React.FC = () => {
 
           {/* Новая кнопка Войти */}
           <Button
-            onClick={() => setLoginDialogOpen(true)}
+            onClick={() => handleDialogChange(true)}
             className="mt-4 py-2 px-4 rounded-full text-white font-medium bg-gray-700 hover:bg-gray-800 transition-colors text-center"
           >
             Войти
@@ -94,13 +117,24 @@ const Layout: React.FC = () => {
       </div>
 
       {/* Модальное окно входа */}
-      <Dialog open={loginDialogOpen} onOpenChange={setLoginDialogOpen}>
+      <Dialog open={loginDialogOpen} onOpenChange={handleDialogChange}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle className="text-center text-[#e32417]">
               Вход в систему
             </DialogTitle>
           </DialogHeader>
+
+          {/* Блок с сообщением об ошибке */}
+          {showLoginError && (
+            <Alert variant="destructive" className="mb-3">
+              <Icon name="AlertCircle" className="h-4 w-4" />
+              <AlertDescription>
+                Ошибка при входе, проверьте логин и пароль.
+              </AlertDescription>
+            </Alert>
+          )}
+
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="login" className="text-right">
@@ -110,6 +144,8 @@ const Layout: React.FC = () => {
                 id="login"
                 className="col-span-3"
                 placeholder="Введите логин"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -121,16 +157,15 @@ const Layout: React.FC = () => {
                 type="password"
                 className="col-span-3"
                 placeholder="Введите пароль"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="flex justify-center mt-2">
               <Button
                 type="button"
                 className="bg-[#e32417] hover:bg-red-700"
-                onClick={() => {
-                  alert("Функциональность авторизации находится в разработке");
-                  setLoginDialogOpen(false);
-                }}
+                onClick={handleLogin}
               >
                 Войти
               </Button>
