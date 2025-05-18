@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const Layout: React.FC = () => {
+  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white flex">
       {/* Навигация */}
@@ -52,6 +63,14 @@ const Layout: React.FC = () => {
           >
             События
           </NavLink>
+
+          {/* Новая кнопка Войти */}
+          <Button
+            onClick={() => setLoginDialogOpen(true)}
+            className="mt-4 py-2 px-4 rounded-full text-white font-medium bg-gray-700 hover:bg-gray-800 transition-colors text-center"
+          >
+            Войти
+          </Button>
         </div>
       </aside>
 
@@ -72,10 +91,53 @@ const Layout: React.FC = () => {
         <main className="min-h-fit">
           <Outlet />
         </main>
-
-        {/* Футер */}
       </div>
-      {/* Футер вынесен за пределы контентной области, чтобы растянуться на всю ширину */}
+
+      {/* Модальное окно входа */}
+      <Dialog open={loginDialogOpen} onOpenChange={setLoginDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="text-center text-[#e32417]">
+              Вход в систему
+            </DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="login" className="text-right">
+                Логин:
+              </Label>
+              <Input
+                id="login"
+                className="col-span-3"
+                placeholder="Введите логин"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="password" className="text-right">
+                Пароль:
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                className="col-span-3"
+                placeholder="Введите пароль"
+              />
+            </div>
+            <div className="flex justify-center mt-2">
+              <Button
+                type="button"
+                className="bg-[#e32417] hover:bg-red-700"
+                onClick={() => {
+                  alert("Функциональность авторизации находится в разработке");
+                  setLoginDialogOpen(false);
+                }}
+              >
+                Войти
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
