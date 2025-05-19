@@ -8,6 +8,7 @@ import General from "./pages/General";
 import Vacancies from "./pages/Vacancies";
 import Benefits from "./pages/Benefits";
 import Events from "./pages/Events";
+import Forums from "./pages/Forums";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="vacancies" element={<Vacancies />} />
             <Route path="benefits" element={<Benefits />} />
             <Route path="events" element={<Events />} />
+            <Route path="forums" element={<Forums />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

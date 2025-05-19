@@ -123,6 +123,21 @@ const Layout: React.FC = () => {
             События
           </NavLink>
 
+          {/* Отображаем ссылку на форум только для авторизованных пользователей */}
+          {user && (
+            <NavLink
+              to="/forums"
+              className={({ isActive }) =>
+                cn(
+                  "py-2 px-4 rounded-full text-white font-medium bg-[#e32417] hover:bg-red-700 transition-colors text-center",
+                  isActive && "bg-red-700 shadow-md",
+                )
+              }
+            >
+              Форум
+            </NavLink>
+          )}
+
           {/* Кнопка Войти/Выйти */}
           {user ? (
             <Button
