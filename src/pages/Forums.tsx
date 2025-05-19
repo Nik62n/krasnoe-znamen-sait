@@ -127,55 +127,58 @@ const Forums: React.FC = () => {
 
       {/* Диалог создания новой темы */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[550px]">
+        <DialogContent className="sm:max-w-[650px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-[#e32417]">Создание темы</DialogTitle>
+            <DialogTitle className="text-[#e32417] text-xl mb-4">
+              Создание темы
+            </DialogTitle>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="title" className="text-right">
+          <div className="flex flex-col gap-6 py-4">
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="title" className="text-md font-medium">
                 Заголовок:
               </Label>
               <Input
                 id="title"
                 value={newPostTitle}
                 onChange={(e) => setNewPostTitle(e.target.value)}
-                className="col-span-3"
+                className="w-full"
                 placeholder="Введите заголовок"
               />
             </div>
-            <div className="grid grid-cols-4 items-start gap-4">
-              <Label htmlFor="content" className="text-right pt-2">
+
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="content" className="text-md font-medium">
                 Содержание:
               </Label>
               <Textarea
                 id="content"
                 value={newPostContent}
                 onChange={(e) => setNewPostContent(e.target.value)}
-                className="col-span-3 min-h-[150px]"
+                className="w-full min-h-[200px]"
                 placeholder="Введите текст сообщения"
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="image" className="text-right">
-                Изображение:
-                <span className="block text-xs text-gray-500">
-                  (не обязательно)
-                </span>
+
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="image" className="text-md font-medium">
+                Изображение:{" "}
+                <span className="text-xs text-gray-500">(не обязательно)</span>
               </Label>
               <Input
                 id="image"
                 value={newPostImageUrl}
                 onChange={(e) => setNewPostImageUrl(e.target.value)}
-                className="col-span-3"
+                className="w-full"
                 placeholder="Ссылка на изображение"
               />
             </div>
-            <div className="col-span-4 text-sm text-gray-500 text-right">
+
+            <div className="text-sm text-gray-500 text-right">
               Время создания: {formatDate(new Date())}
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="mt-6">
             <Button
               type="button"
               variant="outline"
