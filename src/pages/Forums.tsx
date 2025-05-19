@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -145,18 +144,6 @@ const Forums: React.FC = () => {
                 placeholder="Введите заголовок"
               />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="image" className="text-right">
-                Изображение:
-              </Label>
-              <Input
-                id="image"
-                value={newPostImageUrl}
-                onChange={(e) => setNewPostImageUrl(e.target.value)}
-                className="col-span-3"
-                placeholder="Ссылка на изображение"
-              />
-            </div>
             <div className="grid grid-cols-4 items-start gap-4">
               <Label htmlFor="content" className="text-right pt-2">
                 Содержание:
@@ -167,6 +154,21 @@ const Forums: React.FC = () => {
                 onChange={(e) => setNewPostContent(e.target.value)}
                 className="col-span-3 min-h-[150px]"
                 placeholder="Введите текст сообщения"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="image" className="text-right">
+                Изображение:
+                <span className="block text-xs text-gray-500">
+                  (не обязательно)
+                </span>
+              </Label>
+              <Input
+                id="image"
+                value={newPostImageUrl}
+                onChange={(e) => setNewPostImageUrl(e.target.value)}
+                className="col-span-3"
+                placeholder="Ссылка на изображение"
               />
             </div>
             <div className="col-span-4 text-sm text-gray-500 text-right">
