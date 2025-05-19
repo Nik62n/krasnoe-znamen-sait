@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { toast } from "@/components/ui/use-toast";
 
@@ -20,36 +19,47 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Провайдер контекста авторизации
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
 
   // Функция входа с симуляцией 50% успеха
-  const login = async (username: string, password: string): Promise<boolean> => {
+  const login = async (
+    username: string,
+    password: string,
+  ): Promise<boolean> => {
     if (!username.trim()) return false;
 
     // Симуляция задержки сетевого запроса
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     // Симуляция 50% шанса успешной авторизации
     const isSuccess = Math.random() > 0.5;
 
     if (isSuccess) {
+      // Используем username как почту пользователя
+      // Добавляем @email.com если в username нет @
+      const email = username.includes("@")
+        ? username
+        : `${username}@example.com`;
+
       const newUser = {
-        name: username,
-        login: username.toLowerCase(),
+        name: username.split("@")[0], // Имя пользователя - часть до @
+        login: email, // Логин - полная почта
       };
-      
+
       setUser(newUser);
-      
+
       // Показываем тост с приветствием
       toast({
         title: `Здравствуйте, ${newUser.name}!`,
         description: "Вы успешно вошли в систему",
       });
-      
+
       return true;
     }
-    
+
     return false;
   };
 
