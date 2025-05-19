@@ -1,74 +1,42 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import Icon from "@/components/ui/icon";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import Icon from "@/components/ui/icon";
+import { useAuth } from "@/context/AuthContext";
+import { useForumPosts } from "@/hooks/useForumPosts";
+import { CreatePostFormData } from "@/types/forum";
 
-// Интерфейс для форумного поста
-interface ForumPost {
-  id: string;
-  title: string;
-  content: string;
-  imageUrl: string;
-  timestamp: Date;
-  author: string;
-}
+// Импорт компонентов форума
+import ForumPost from "@/components/forum/ForumPost";
+import CreatePostDialog from "@/components/forum/CreatePostDialog";
+import EmptyForumState from "@/components/forum/EmptyForumState";
 
 const Forums: React.FC = () => {
+  const { user, isAuthenticated } = useAuth();
+  const { posts, createPost, addComment } = useForumPosts();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [posts, setPosts] = useState<ForumPost[]>([]);
-  const [newPostTitle, setNewPostTitle] = useState("");
-  const [newPostContent, setNewPostContent] = useState("");
-  const [newPostImageUrl, setNewPostImageUrl] = useState("");
 
-  // Функция создания нового поста
-  const handleCreatePost = () => {
-    if (!newPostTitle.trim() || !newPostContent.trim()) return;
-
-    const newPost: ForumPost = {
-      id: Date.now().toString(),
-      title: newPostTitle,
-      content: newPostContent,
-      imageUrl: newPostImageUrl || "https://via.placeholder.com/300x200",
-      timestamp: new Date(),
-      author: "Текущий пользователь", // Здесь можно использовать имя авторизованного пользователя
-    };
-
-    setPosts([newPost, ...posts]);
+  // Обработчик создания поста
+  const handleCreatePost = (formData: CreatePostFormData) => {
+    createPost(
+      formData.title, 
+      formData.content, 
+      formData.imageUrl, 
+      user?.name || "Анонимный пользователь"
+    );
     setIsDialogOpen(false);
-    resetForm();
   };
 
-  // Сброс формы
-  const resetForm = () => {
-    setNewPostTitle("");
-    setNewPostContent("");
-    setNewPostImageUrl("");
-  };
-
-  // Форматирование даты для отображения
-  const formatDate = (date: Date) => {
-    return date.toLocaleString("ru-RU", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+  // Обработчик добавления комментария
+  const handleAddComment = (postId: string, content: string) => {
+    if (!user) return;
+    addComment(postId, content, user.name);
   };
 
   return (
     <div className="container mx-auto py-6 px-4">
+      {/* Заголовок с кнопкой создания поста */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-[#e32417]">Форум</h1>
         <Button
@@ -80,122 +48,29 @@ const Forums: React.FC = () => {
         </Button>
       </div>
 
+      {/* Содержимое форума */}
       {posts.length === 0 ? (
-        <div className="text-center py-10">
-          <p className="text-gray-500">
-            Здесь пока нет тем. Будьте первым, кто создаст тему!
-          </p>
-          <Button
-            onClick={() => setIsDialogOpen(true)}
-            variant="outline"
-            className="mt-4"
-          >
-            <Icon name="Plus" className="mr-2 h-4 w-4" />
-            Создать тему
-          </Button>
-        </div>
+        <EmptyForumState onCreatePost={() => setIsDialogOpen(true)} />
       ) : (
         <ScrollArea className="h-[500px]">
           <div className="space-y-4 pr-4">
             {posts.map((post) => (
-              <Card key={post.id} className="w-full">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <CardTitle>{post.title}</CardTitle>
-                    <span className="text-xs text-gray-500">
-                      {formatDate(post.timestamp)}
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-col md:flex-row gap-4">
-                    {post.imageUrl && (
-                      <img
-                        src={post.imageUrl}
-                        alt={post.title}
-                        className="rounded-md max-w-[300px] max-h-[200px] object-cover"
-                      />
-                    )}
-                    <p className="text-gray-700">{post.content}</p>
-                  </div>
-                </CardContent>
-              </Card>
+              <ForumPost 
+                key={post.id} 
+                post={post} 
+                onAddComment={handleAddComment} 
+              />
             ))}
           </div>
         </ScrollArea>
       )}
 
       {/* Диалог создания новой темы */}
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-[650px] max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-[#e32417] text-xl mb-4">
-              Создание темы
-            </DialogTitle>
-          </DialogHeader>
-          <div className="flex flex-col gap-6 py-4">
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="title" className="text-md font-medium">
-                Заголовок:
-              </Label>
-              <Input
-                id="title"
-                value={newPostTitle}
-                onChange={(e) => setNewPostTitle(e.target.value)}
-                className="w-full"
-                placeholder="Введите заголовок"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="content" className="text-md font-medium">
-                Содержание:
-              </Label>
-              <Textarea
-                id="content"
-                value={newPostContent}
-                onChange={(e) => setNewPostContent(e.target.value)}
-                className="w-full min-h-[200px]"
-                placeholder="Введите текст сообщения"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="image" className="text-md font-medium">
-                Изображение:{" "}
-                <span className="text-xs text-gray-500">(не обязательно)</span>
-              </Label>
-              <Input
-                id="image"
-                value={newPostImageUrl}
-                onChange={(e) => setNewPostImageUrl(e.target.value)}
-                className="w-full"
-                placeholder="Ссылка на изображение"
-              />
-            </div>
-
-            <div className="text-sm text-gray-500 text-right">
-              Время создания: {formatDate(new Date())}
-            </div>
-          </div>
-          <DialogFooter className="mt-6">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setIsDialogOpen(false)}
-            >
-              Отмена
-            </Button>
-            <Button
-              type="button"
-              className="bg-[#e32417] hover:bg-red-700"
-              onClick={handleCreatePost}
-            >
-              Создать
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <CreatePostDialog
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        onSubmit={handleCreatePost}
+      />
     </div>
   );
 };
